@@ -1,14 +1,8 @@
-1) Finding nodes in circle: 
-#include <bits/stdc++.h>
-#define ll long long
-#define sl(n) scanf("%lld",&n)
-#define pb push_back
-
-using namespace std;
+//Finding nodes in circle: 
 #define lim 100010
-ll ens[ lim ];
-bool iscycle[lim];
-ll color[lim];
+ll ens[ lim ]; //koyta circle ekhane shuru hoise
+bool iscycle[lim]; //node ta ki cycle er moddhe pore ?
+ll color[lim]; // kaj shuru , shesh naki choltese
 
 vector <ll> graph[lim];
 
