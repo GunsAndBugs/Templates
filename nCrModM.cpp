@@ -1,4 +1,4 @@
-1) nCr % m 
+// nCr % m 
 // lim = For generating prime numbers up to lim
 // mod = mod value .
 // f[i] = frequency of prime number i in nCr
