@@ -1,4 +1,12 @@
-#define lim  100010
+//complexity: O(nlgn) 
+/*
+define limit first.
+define LIS_SZ = 1 for every test case
+define lastVal[] = infinity first
+LB(s,e,val) finds the largest index i so that lastVal[i]<=val
+genLIS( *a , n ) genarets LIS_SZ for array a[] of length 'n'
+*/
+#define lim 100010
 LL arr[lim];
 LL lastVal[lim];
 LL LIS_SZ = 1;
