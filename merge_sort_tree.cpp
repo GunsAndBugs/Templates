@@ -1,58 +1,42 @@
+
 #define lim  200010
 
-ll arr[lim * 2];
-vector < ll > tree[4 * 2 * lim];
+//////////////// Merge Sort Tree //////////////////////////
 
-void merge_sort(ll node, ll a, ll b) {
+LL arr[lim ];
+vector < LL > tree[4 * lim];
+
+void merge_sort(LL node, LL a, LL b) {
 	if (a == b) {
 		tree[node].pb(arr[a]);
 		return;
 	}
-	ll mid = (a + b) / 2 , left, right;
+	LL mid = (a + b) / 2 , left, right;
 	left = node * 2 ; right = left + 1;
 	merge_sort( left, a, mid);
 	merge_sort( right, mid + 1, b);
-
 	merge( tree[left].begin() , tree[left].end() , tree[right].begin(), tree[right].end(), back_inserter(tree[node]));
 }
 
-ll up( ll valu, ll node ) {
-	//cout<<valu<<' '<<node<<endl;
-	ll l = 0 , r = tree[node].size() - 1 , mid;
-	ll pos = 0;
-
-	while ( l <= r ) {
-		mid = (l + r) / 2;
-		if ( tree[node][mid] <= valu ) {
-			pos = mid + 1;
-			l = mid + 1;
-		}
-		else {
-			r = mid - 1;
-		}
-	}
-
-
-	return pos;
+LL BS( LL node, LL val ){
+   
+   // ............ write here.
+  
 }
 
-ll query(ll node, ll a, ll b, ll i, ll j, ll val) {
+LL query(LL node, LL a, LL b, LL i, LL j, LL val) {
+	
 	if ( a > j || b < i ) return 0;
 	if ( i <= a && b <= j ) {
 
-		ll ret = 0;
 		if ( tree[node].size() )
-			ret = up( val, node );
-		//scout<<"ret "<<ret<<endl;
-		return ret;
+			return BS( val, node );
+		return 0;
 
 	}
-	ll r1 , r2;
-	ll left, right, mid;
-	left = node * 2 ;  right = left + 1;
-	mid = (a + b) / 2;
-	r1 = query( left , a, mid, i , j , val );
-	r2 = query( right , mid + 1 , b, i, j, val);
-	return r1 + r2;
-
+	LL left = (node<<1) , right = left + 1 , mid = ((a+b)>>2);
+	return query(left,a,mid,i,j,val) + query( right, mid+1,b,i,j,val );
 }
+
+
+//////////////// Merge Sort Tree END //////////////////////////
