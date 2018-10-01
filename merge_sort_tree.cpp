@@ -20,21 +20,28 @@ void merge_sort(LL node, LL a, LL b) {
 
 LL BS( LL node, LL val ){
    
-   // ............ write here.
-  
+   LL l = 0 ,  r = tree[node].size()-1 , m;
+   LL ret = 0;
+   while(l<=r){
+   		m = (l+r)/2;
+   		if( tree[node][m] <= val ){
+   			ret = m+1;
+   			l = m+1;
+   		}
+   		else r = m-1;
+   }
+   return tree[node].size()-ret;
 }
 
 LL query(LL node, LL a, LL b, LL i, LL j, LL val) {
 	
 	if ( a > j || b < i ) return 0;
 	if ( i <= a && b <= j ) {
-
 		if ( tree[node].size() )
-			return BS( val, node );
+			return BS( node, val );
 		return 0;
-
 	}
-	LL left = (node<<1) , right = left + 1 , mid = ((a+b)>>2);
+	LL left = (node<<1) , right = left + 1 , mid = ((a+b)/2);
 	return query(left,a,mid,i,j,val) + query( right, mid+1,b,i,j,val );
 }
 
