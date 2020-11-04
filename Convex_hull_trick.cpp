@@ -5,6 +5,10 @@ for any given value of x, find the min/max y.
 CHT machine( _decSlope, _askMin )
 machine.add( M,C ) where y = Mx + C
 machine.query( x )
+
+Time: nlog3(n)
+Memory: O(n)
+
 */
 
 const LL inf = 1e18;
